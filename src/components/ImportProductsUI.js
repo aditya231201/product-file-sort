@@ -20,6 +20,7 @@ const ImportProductsUI = () => {
   ]);
   
   const handleFileChange = (event) => {
+    setSelectedFile(selectedFile)
     setSelectedFile(event.target.files[0]);
   };
   if (showTable) {
