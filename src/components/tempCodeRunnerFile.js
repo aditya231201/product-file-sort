@@ -18,28 +18,25 @@ const ImportProductsUI = () => {
     'UTM Source',
     'UTM Medium'
   ]);
-
+  
   const handleFileChange = (event) => {
     setSelectedFile(selectedFile)
     setSelectedFile(event.target.files[0]);
   };
-
   if (showTable) {
-    return <Products />;
+    return <Products />
   } else {
     return (
-      <>
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ flex: 1, padding: '20px' }}>
-          <h2>Step 1: Select File</h2>
+      <div>
+        <h2>Import Products</h2>
+        <div>
+          <p>Step 1: Select File</p>
           <input type="file" onChange={handleFileChange} />
         </div>
-        <div style={{ flex: 1, padding: '20px' }}>
-          <h2>Step 2: Specify Format</h2>
-          <label>
-            Choose file: <input type="file" />
-          </label>
+        <div>
+          <p>Step 2: Specify Format</p>
           <div>
+            Choose file <input type="file" />
             File Type: 
             <select value={fileType} onChange={(e) => setFileType(e.target.value)}>
               <option value=".csv">.CSV</option>
@@ -62,35 +59,28 @@ const ImportProductsUI = () => {
             </select>
           </div>
         </div>
-        <div style={{ flex: 2, padding: '20px' }}>
-          <h2>Step 3: Display Handling</h2>
-          <div><label>Select the fields to be displayed:</label></div>
-          <select multiple value={displayFields} onChange={(e) => setDisplayFields(Array.from(e.target.selectedOptions, (option) => option.value))}>
-            <option value="Product Id">Product ID</option>
-            <option value="Subcategory">Subcategory</option>
-            <option value="Title">Title</option>
-            <option value="Price">Price</option>
-            <option value="Popularity">Popularity</option>
-            <option value="Description">Description</option>
-            <option value="Rating">Rating</option>
-            <option value="UTM Source">UTM Source</option>
-            <option value="UTM Medium">UTM Medium</option>
-          </select>
+        <div>
+          <p>Step 3: Display Handling</p>
+          <div>
+            <p>Select the fields to be displayed</p>
+            <div>
+              <select multiple value={displayFields} onChange={(e) => setDisplayFields(Array.from(e.target.selectedOptions, (option) => option.value))}>
+                <option value="Product Id">Product Id</option>
+                <option value="Subcategory">Subcategory</option>
+                <option value="Title">Title</option>
+                <option value="Price">Price</option>
+                <option value="Popularity">Popularity</option>
+                <option value="Description">Description</option>
+                <option value="Rating">Rating</option>
+                <option value="UTM Source">UTM Source</option>
+                <option value="UTM Medium">UTM Medium</option>
+              </select>
+            </div>
+          </div>
         </div>
+        <button onClick={() => setShowTable(true)}>Next</button>
       </div>
-      <div >
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-          <div style={{ alignSelf: 'flex-end', padding: '20px' }}>
-            <button onClick={() => setShowTable(true)}>Next</button>
-        </div>
-        
-        <div style={{ alignSelf: 'flex-end', padding: '20px' }}>
-            <button>Cancel</button>
-        </div>
-        </div>
-      </div>
-      </>
-    );
+    );  
   }
 };
 
